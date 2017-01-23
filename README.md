@@ -7,6 +7,8 @@ Test environment using docker-compose to simulate a pub-sub pattern between Node
 
 `docker-compose up`
 
+This will build the images for 3 containers (Node.js App, Python Celery App, and RabbitMQ instance)
+
 ## What it does
 
 `./worker` uses Node.js, module node-celery to publish a message to RabbitMQ at 1 message/ms
