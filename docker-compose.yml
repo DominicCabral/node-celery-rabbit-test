@@ -4,9 +4,6 @@ services:
         image: "rabbitmq:3.6-management"
         ports:
             - "15672:15672"
-        links:
-            - consumer
-            - producer
     consumer:
         build: ./consumer
         volumes: 
@@ -15,4 +12,6 @@ services:
         build: ./producer
         volumes: 
             - .:/producer
+        ports:
+            - "80:80"
        
