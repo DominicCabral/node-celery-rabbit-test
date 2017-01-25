@@ -9,4 +9,4 @@ RUN pip install -r requirements.txt
 
 ADD . /usr/src/app
 USER worker
-CMD ["celery","-A","worker","-Q","tasks","worker"]
+CMD ["celery","-A","worker","-Q","tasks","worker","-c","1"]

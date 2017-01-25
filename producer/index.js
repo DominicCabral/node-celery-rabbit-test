@@ -11,24 +11,20 @@ var client = celery.createClient({
     IGNORE_RESULT: true
 });
 
+client.on('connect', () => {
+    setInterval(sendMessageToWorker, 1000);
+});
 
 client.on('error', function (err) {
     console.log(err);
 });
 
-client.on('connect', function () {
-    console.log('connect');
 
-    setInterval(() => {
-        console.log('try');
+function sendMessageToWorker() {
+    const message = { hello: 'wabbit' };
 
-        var messageToRabbit = {
-            hello:'wabbit'
-        };
-
-        var task = client.createTask("worker.run");
-        task.call([messageToRabbit]);
-
-    }, 100);
-});
+    console.log('connected');
+    var task = client.createTask("worker.run");
+    task.call([message]);
+}
 
