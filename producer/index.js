@@ -1,6 +1,7 @@
 var celery = require('node-celery');
 var importantCounter = 0;
 var normalCounter = 0;
+var mostImportantCounter = 0;
 
 // Initialize connection to rabbitmq
 var client = celery.createClient({
@@ -16,6 +17,7 @@ var client = celery.createClient({
 client.on('connect', () => {
   setInterval(sendMessageToWorker, 100);
   setInterval(sendImportantMessageToWorker, 5000);
+  setInterval(sendMostImportantMessageToWorker, 50000);
 });
 
 client.on('error', function(err) {
@@ -36,6 +38,15 @@ function sendImportantMessageToWorker() {
   console.log('IMPORTANT', importantCounter)
   const message = { important: importantCounter };
   var task = client.createTask("worker.run");
-  task.call([message], {}, { priority: 10 });
+  task.call([message], {}, { priority: 5 });
   importantCounter++;
+}
+
+function sendMostImportantMessageToWorker() {
+
+  console.log('IMPORTANT', mostImportantCounter)
+  const message = { most_important: mostImportantCounter };
+  var task = client.createTask("worker.run");
+  task.call([message], {}, { priority: 10 });
+  mostImportantCounter++;
 }
