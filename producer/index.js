@@ -35,7 +35,7 @@ function sendMessageToWorker() {
 
 function sendImportantMessageToWorker() {
 
-  console.log('IMPORTANT', importantCounter)
+  console.log('sent: IMPORTANT', importantCounter)
   const message = { important: importantCounter };
   var task = client.createTask("worker.run");
   task.call([message], {}, { priority: 5 });
@@ -44,7 +44,7 @@ function sendImportantMessageToWorker() {
 
 function sendMostImportantMessageToWorker() {
 
-  console.log('IMPORTANT', mostImportantCounter)
+  console.log('sent: MOST IMPORTANT', mostImportantCounter)
   const message = { most_important: mostImportantCounter };
   var task = client.createTask("worker.run");
   task.call([message], {}, { priority: 10 });
