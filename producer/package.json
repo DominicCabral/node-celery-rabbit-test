@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js && node index_priority.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-celery": "^0.2.8"
+    "node-celery": "git://github.com/netrasys/node-celery.git"
   }
 }

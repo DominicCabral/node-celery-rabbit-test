@@ -1,5 +1,5 @@
 version: '2'
-services: 
+services:
     rabbitmq:
         image: "rabbitmq:3.6-management"
         ports:
@@ -15,4 +15,3 @@ services:
         build: ./producer
         volumes: 
             - .:/producer
-       
