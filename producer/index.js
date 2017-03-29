@@ -14,7 +14,7 @@ var client = celery.createClient({
 });
 
 client.on('connect', () => {
-  setInterval(sendMessageToWorker, 500);
+  setInterval(sendMessageToWorker, 100);
   setInterval(sendImportantMessageToWorker, 5000);
 });
 
